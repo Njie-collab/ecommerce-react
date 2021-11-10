@@ -1,0 +1,11 @@
+nav ul {
+    display:flex;
+    justify-content:space-between;
+    text-decoration:none;
+    
+    
+}
+li{
+list-style-type: none;
+
+}
