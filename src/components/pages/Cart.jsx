@@ -4,7 +4,7 @@ import MyContext from "../../context/MyContext";
 
 const Cart = () => {
   const context = useContext(MyContext);
-  const { cart ,handleDelete} = context;
+  const { cart ,handleDelete,addtoCart,decremnent} = context;
 
 
   return (
@@ -19,6 +19,8 @@ const Cart = () => {
             <img src={item.image_link} alt="" />
             <p>{item.quantity}</p>
             <button onClick={()=>handleDelete(item)}>Remove item</button>
+            <button onClick={()=>addtoCart(item)}>+</button>
+            <button onClick={()=>decremnent(item)}>-</button>
           </div>
         )
       )}

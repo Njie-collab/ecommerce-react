@@ -1,3 +1,6 @@
+body{
+   background-color: rgb(116, 143, 223);
+}
 nav ul {
     display:flex;
     justify-content:space-between;

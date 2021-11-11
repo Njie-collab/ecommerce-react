@@ -1,9 +1,11 @@
 import React ,{useContext}from 'react'
 import MyContext from '../../context/MyContext'
+
 const Products = () => {
     const context=useContext(MyContext)
     //const {result}=context//
     const {result,addtoCart}=context
+    
     console.log(result)
     return (
         <div>
@@ -14,9 +16,7 @@ const Products = () => {
                  <h3>{item.id}</h3>
                  <img src={item.image_link} alt="" />
                  <button onClick={()=>{addtoCart(item)}}>addtoCart
-
                  </button>
-              
                </div>
 
             )}
