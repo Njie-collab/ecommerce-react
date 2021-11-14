@@ -1,29 +1,24 @@
-import React from 'react'
-import { useContext } from 'react'
-import MyContext from '../../context/MyContext'
+import React, { useContext } from "react";
+/* import {useNavigate} from 'react-router-dom' */
+import MyContext from "../../context/MyContext";
 
 const Checkout = () => {
-     const context = useContext(MyContext)
-     const{result,TotalAmount}=context
+  const context = useContext(MyContext);
+  const { cart } = context;
 
-    return (
-      <div>
-        <p>Total€/$</p>
-        {result.data.map((item) => (
-          <div key={item.id}>
-            <h3>{item.id}</h3>
-            <img src={item.image_link} alt="" />
-            <button
-              onClick={() => {
-                TotalAmount(item);
-              }}
-            >
-              addtoCart
-            </button>
-          </div>
-        ))}
-      </div>
-    );
-}
+  return (
+    <section>
+      <h1>CHECKOUT</h1>
+      {cart.map((item) => (
+        <div key={item.id}>
+          <h3>{item.name}</h3>
+          <span>item price :{item.price * item.quantity}</span>
+          <span>item quantity : {item.quantity}</span>
+          <h1>thank you for shopping with us</h1>
+        </div>
+      ))}
+    </section>
+  );
+};
 
-export default Checkout
+export default Checkout;

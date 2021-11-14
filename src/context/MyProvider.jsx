@@ -8,8 +8,9 @@ export const MyProvider = (props) => {
     error: "",
   });
   const [cart, setCart] = useState([]);
-  const [form,setForm]=useState({email:"", address:""})
-  const [error,setError]=useState({error:""})
+  const [form, setForm] = useState({ email: "", address: "" });
+  const [error, setError] = useState({ error: "" });
+  const [login, setLogin] = useState({ success: false });
 
   const addtoCart = (element) => {
     const addItem = cart.find((item) => item.id === element.id);
@@ -32,6 +33,14 @@ export const MyProvider = (props) => {
           "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
         );
         const data = await resp.json();
+        data.map(
+          (item) =>
+            item.product_colors.length === 0 &&
+            item.product_colors.push({
+              hex_value: "#d87093",
+              colour_name: "palevioletred",
+            })
+        );
         setResult({ data: data, loading: false, error: "" });
       };
       getData();
@@ -53,15 +62,34 @@ export const MyProvider = (props) => {
   const decremnent = (element) => {
     const subtract = cart.find((item) => item.id === element.id);
     const index = cart.indexOf(subtract);
-    subtract.quantity -=1
+    subtract.quantity -= 1;
     const clone = [...cart];
-    subtract.quantity >= 1? clone.splice(index,1,subtract):clone.splice(index,1)
+    subtract.quantity >= 1
+      ? clone.splice(index, 1, subtract)
+      : clone.splice(index, 1);
     setCart(clone);
+  };
+  const totalCalc = (item) => {
+    let total = cart.reduce((acc, next) => acc + next.quantity * next.price, 0);
+    return total;
   };
 
   return (
     <MyContext.Provider
-      value={{ result, addtoCart, cart, handleDelete, decremnent,form,setForm,error,setError }}
+      value={{
+        result,
+        addtoCart,
+        cart,
+        handleDelete,
+        decremnent,
+        form,
+        setForm,
+        error,
+        setError,
+        login,
+        setLogin,
+        totalCalc,
+      }}
     >
       {props.children}
     </MyContext.Provider>

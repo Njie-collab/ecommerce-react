@@ -22,7 +22,7 @@ const Routes = () => {
                <Route path="/home" element={<Home/>}/>
                <Route path="/cart" element={<Cart/>}/>
                <Route path="/products" element={<Products/>}/>
-               <Route path="/productDetails" element={<ProductDetails/>}/>
+               <Route path="/product-detail" element={<ProductDetails/>}/>
                <Route path="/checkout" element={<Checkout/>}/>
                <Route path="/notfound404" element={<NotFound404/>}/>
                <Route path="/reducer" element={<Reducer/>}/>

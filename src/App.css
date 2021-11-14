@@ -10,5 +10,16 @@ nav ul {
 }
 li{
 list-style-type: none;
+ text-decoration: none;
 
+}
+NavLink,ul,il{
+    text-decoration: none;
+ 
+}
+button{
+    color: rgb(150, 37, 37);
+}
+form{
+    color: rgb(24, 25, 26);
 }
